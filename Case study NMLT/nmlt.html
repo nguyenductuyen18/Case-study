@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><link rel="stylesheet" href="nmlt.css">
+<body>
+
+   <div id="tren">
+    <div>
+        <label for="" >Id</label>
+        <input type="text" id="id" style="margin-left: 30px;">
+    </div>
+    <div>
+        <label for="">Name</label>
+        <input type="text" id="name">
+    </div>
+    
+    <div>
+        <label for="" >Class</label>
+        <select name="" id="lop"  style="margin-left: 8px;" >
+            
+            <option  value="IBSK1D1">IBSK1D1</option>
+            <option value="IBSK1D2" >IBSK1D2</option>
+        </select>
+    </div>
+    <div>
+    <button onclick="bang()">submit</button></div>
+    <table id="dbang" border="1" >
+        <thead >
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Lớp</th>
+            <th>Chức năng</th>
+        </tr>
+    </div>
+        
+    </thead>
+        <script>
+            var data=[]
+
+            function bang(){
+                var item_id= document.getElementById("id").value;
+                var item_name= document.getElementById("name").value;
+                var item_lop= document.getElementById("lop").value;
+
+               if (item_id==""||item_name=="") {
+                alert ("not enough input")
+                
+               }else{
+                var tbang={
+                     Id :item_id,
+                     Name:item_name,
+                     Class: item_lop
+
+                    
+                }
+                let index = data.findIndex((c)=>c.Id==tbang.Id)
+                if (index>=0) {
+                    data.splice(index,1,tbang)
+                }else{
+                    data.push(tbang)
+                }   //sau khi sửa giá trị ban đàu sẽ biến mất và đc thay thế bởi giá trị mới 
+                
+                dbang()
+                dk()
+            }
+        }
+            function dbang(){
+                table =` <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Lớp</th>
+            <th>Chức năng</th>
+        </tr>`
+       
+           for (let i = 0; i < data.length; i++) {
+            table+=` <tr>
+            <td>${data[i].Id}</td>
+            <td>${data[i].Name}</td>
+            <td>${data[i].Class}</td>
+            <th><button onclick="deleteItem(${data[i].id})">delete</button>
+                <button onclick="editItem(${data[i].id})">edit</button></th>
+        </tr>`
+           }
+            document.getElementById("dbang").innerHTML=table
+           }
+        
+            function dk(){
+                document.getElementById("id").value="";
+                document.getElementById("name").value="";
+                document.getElementById("lop").value="";
+            }
+            function deleteItem(bandau){
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].ID==bandau) {
+                        data.splice(i,1)
+
+                        dbang()
+                        
+                    }
+                    
+                }
+            }
+            function editItem(sua){   //sửa ở đâu 
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].ID==sua)
+                    document.getElementById("id").value= data[i].Id;
+                    document.getElementById("name").value= data[i].Name;
+                    document.getElementById("lop").value= data[i].Class;
+                }
+            }
+
+
+        </script>
+       
+</body>
+
+</html>

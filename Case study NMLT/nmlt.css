@@ -1,0 +1,32 @@
+body{
+   
+    background-image:url(./0f5e92718c3005723b0dcd96cad39286.jpg) ;
+   
+}
+*{
+    padding: 5px;
+   
+
+}
+#tren{
+    color: aliceblue;
+
+    
+    
+}
+table{
+    padding: 0 130px;
+    margin: auto;
+   border: auto;
+    border-collapse: collapse;
+    background-color: rgb(104, 111, 214)
+    
+   
+}
+table th{
+    padding: 0 130px;
+    border: 3px solid #e5dae7f8;
+    background-color: rgb(195, 146, 72)
+    
+
+}
